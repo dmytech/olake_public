@@ -12,3 +12,18 @@ configMapGenerator:
 
 generatorOptions:
   disableNameSuffixHash: true  
+
+patches:
+  - target:
+      kind: CronJob
+      name: sync
+    patch: |-
+      - op: replace
+        path: /spec/jobTemplate/spec/template/spec/volumes/0/secret/secretName
+        value: logistics-db-source
+      - op: replace
+        path: /spec/jobTemplate/spec/template/spec/volumes/1/secret/secretName
+        value: lake-destination
+      - op: replace
+        path: /spec/jobTemplate/spec/template/spec/volumes/2/configMap/name
+        value: streams

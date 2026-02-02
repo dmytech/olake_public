@@ -17,13 +17,13 @@ spec:
           volumes:
             - name: in-source
               secret:
-                secretName: logistics-db-source
+                secretName: REPLACEME_SOURCE_SECRET
             - name: in-dest
               secret:
-                secretName: lake-destination
+                secretName: REPLACEME_DEST_SECRET
             - name: in-streams
               configMap:
-                name: cron-logistics-db-to-lake-streams
+                name: REPLACEME_STREAMS_CONFIGMAP
             - name: config
               persistentVolumeClaim:
                 claimName: sync-state-pvc
