@@ -1,0 +1,71 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: sync
+spec:
+  schedule: "*/2 * * * *"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      template:
+        spec:
+          restartPolicy: Never
+
+          volumes:
+            - name: in-source
+              secret:
+                secretName: logistics-db-source
+            - name: in-dest
+              secret:
+                secretName: lake-destination
+            - name: in-streams
+              configMap:
+                name: cron-logistics-db-to-lake-streams
+            - name: config
+              persistentVolumeClaim:
+                claimName: sync-state-pvc
+
+          initContainers:
+            - name: render
+              image: busybox:1.36
+              command: ["sh","-c"]
+              args:
+                - |
+                  set -e
+                  mkdir -p /config/logs
+
+                  cp /in/source/source.json /config/source.json
+                  cp /in/dest/destination.json /config/destination.json
+                  cp /in/streams/streams.json /config/streams.json
+              volumeMounts:
+                - name: in-source
+                  mountPath: /in/source
+                  readOnly: true
+                - name: in-dest
+                  mountPath: /in/dest
+                  readOnly: true
+                - name: in-streams
+                  mountPath: /in/streams
+                  readOnly: true
+                - name: config
+                  mountPath: /config
+
+          containers:
+            - name: sync
+              image: olakego/source-postgres:latest
+              args:
+                - sync
+                - --config
+                - /config/source.json
+                - --streams
+                - /config/streams.json
+                - --destination
+                - /config/destination.json
+                - --state
+                - /config/state.json
+              volumeMounts:
+                - name: config
+                  mountPath: /config

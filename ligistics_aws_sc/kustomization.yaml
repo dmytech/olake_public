@@ -1,0 +1,14 @@
+namespace: olake
+
+resources:
+  - ../../base/sync/
+
+namePrefix: cron-logistics-db-to-lake-
+
+configMapGenerator:
+  - name: streams
+    files:
+      - streams.json
+
+generatorOptions:
+  disableNameSuffixHash: true  

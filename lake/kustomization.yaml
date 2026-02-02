@@ -1,0 +1,11 @@
+namespace: olake
+
+namePrefix: lake-
+
+secretGenerator:
+  - name: destination
+    files:
+      - destination.json
+
+generatorOptions:
+  disableNameSuffixHash: true

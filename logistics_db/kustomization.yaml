@@ -1,0 +1,23 @@
+namespace: olake
+
+resources:
+  - ../../base/discover
+
+namePrefix: logistics-db-
+
+secretGenerator:
+  - name: source
+    files:
+      - source.json
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+patches:
+  - target:
+      kind: Job
+      name: olake-source-check  
+    patch: |-
+      - op: replace
+        path: /spec/template/spec/volumes/0/secret/secretName
+        value: source

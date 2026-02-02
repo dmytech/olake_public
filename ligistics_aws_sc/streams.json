@@ -1,0 +1,748 @@
+{
+    "selected_streams": {
+        "logistic_app": [
+                {
+                    "normalization": true,
+                    "partition_regex": "",
+                    "stream_name": "drivers"
+                },
+                {
+                    "normalization": true,
+                    "partition_regex": "",
+                    "stream_name": "vehicles"
+                }
+            ]
+        },
+    "streams": [
+        {
+            "stream": {
+                "available_cursor_fields": [
+                    "status",
+                    "note",
+                    "event_id",
+                    "shipment_id",
+                    "location_id",
+                    "event_time"
+                ],
+                "default_stream_properties": {
+                    "append_mode": false,
+                    "normalization": true
+                },
+                "destination_database": "postgres_logistics_db:logistic_app",
+                "destination_table": "tracking_events",
+                "name": "tracking_events",
+                "namespace": "logistic_app",
+                "source_defined_primary_key": [
+                    "event_id"
+                ],
+                "supported_sync_modes": [
+                    "full_refresh",
+                    "incremental"
+                ],
+                "sync_mode": "full_refresh",
+                "type_schema": {
+                    "properties": {
+                        "_olake_id": {
+                            "destination_column_name": "_olake_id",
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "_olake_timestamp": {
+                            "destination_column_name": "_olake_timestamp",
+                            "type": [
+                                "timestamp_micro",
+                                "null"
+                            ]
+                        },
+                        "_op_type": {
+                            "destination_column_name": "_op_type",
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "event_id": {
+                            "destination_column_name": "event_id",
+                            "type": [
+                                "integer"
+                            ]
+                        },
+                        "event_time": {
+                            "destination_column_name": "event_time",
+                            "type": [
+                                "timestamp",
+                                "null"
+                            ]
+                        },
+                        "location_id": {
+                            "destination_column_name": "location_id",
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "note": {
+                            "destination_column_name": "note",
+                            "type": [
+                                "null",
+                                "string"
+                            ]
+                        },
+                        "shipment_id": {
+                            "destination_column_name": "shipment_id",
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "status": {
+                            "destination_column_name": "status",
+                            "type": [
+                                "null",
+                                "string"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "stream": {
+                "available_cursor_fields": [
+                    "customer_id",
+                    "name",
+                    "email",
+                    "phone_number",
+                    "address",
+                    "created_at"
+                ],
+                "default_stream_properties": {
+                    "append_mode": false,
+                    "normalization": true
+                },
+                "destination_database": "postgres_logistics_db:logistic_app",
+                "destination_table": "customers",
+                "name": "customers",
+                "namespace": "logistic_app",
+                "source_defined_primary_key": [
+                    "customer_id"
+                ],
+                "supported_sync_modes": [
+                    "full_refresh",
+                    "incremental"
+                ],
+                "sync_mode": "full_refresh",
+                "type_schema": {
+                    "properties": {
+                        "_olake_id": {
+                            "destination_column_name": "_olake_id",
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "_olake_timestamp": {
+                            "destination_column_name": "_olake_timestamp",
+                            "type": [
+                                "null",
+                                "timestamp_micro"
+                            ]
+                        },
+                        "_op_type": {
+                            "destination_column_name": "_op_type",
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "address": {
+                            "destination_column_name": "address",
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "created_at": {
+                            "destination_column_name": "created_at",
+                            "type": [
+                                "timestamp",
+                                "null"
+                            ]
+                        },
+                        "customer_id": {
+                            "destination_column_name": "customer_id",
+                            "type": [
+                                "integer"
+                            ]
+                        },
+                        "email": {
+                            "destination_column_name": "email",
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "name": {
+                            "destination_column_name": "name",
+                            "type": [
+                                "string"
+                            ]
+                        },
+                        "phone_number": {
+                            "destination_column_name": "phone_number",
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "stream": {
+                "available_cursor_fields": [
+                    "vehicle_id",
+                    "type",
+                    "plate_number",
+                    "capacity_kg",
+                    "capacity_m3",
+                    "status",
+                    "created_at"
+                ],
+                "default_stream_properties": {
+                    "append_mode": false,
+                    "normalization": true
+                },
+                "destination_database": "postgres_logistics_db:logistic_app",
+                "destination_table": "vehicles",
+                "name": "vehicles",
+                "namespace": "logistic_app",
+                "source_defined_primary_key": [
+                    "vehicle_id",
+                    "plate_number"
+                ],
+                "supported_sync_modes": [
+                    "full_refresh",
+                    "incremental"
+                ],
+                "sync_mode": "full_refresh",
+                "type_schema": {
+                    "properties": {
+                        "_olake_id": {
+                            "destination_column_name": "_olake_id",
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "_olake_timestamp": {
+                            "destination_column_name": "_olake_timestamp",
+                            "type": [
+                                "timestamp_micro",
+                                "null"
+                            ]
+                        },
+                        "_op_type": {
+                            "destination_column_name": "_op_type",
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "capacity_kg": {
+                            "destination_column_name": "capacity_kg",
+                            "type": [
+                                "number",
+                                "null"
+                            ]
+                        },
+                        "capacity_m3": {
+                            "destination_column_name": "capacity_m3",
+                            "type": [
+                                "null",
+                                "number"
+                            ]
+                        },
+                        "created_at": {
+                            "destination_column_name": "created_at",
+                            "type": [
+                                "timestamp",
+                                "null"
+                            ]
+                        },
+                        "plate_number": {
+                            "destination_column_name": "plate_number",
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "status": {
+                            "destination_column_name": "status",
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "type": {
+                            "destination_column_name": "type",
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "vehicle_id": {
+                            "destination_column_name": "vehicle_id",
+                            "type": [
+                                "integer"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "stream": {
+                "available_cursor_fields": [
+                    "shipment_id",
+                    "volume_m3",
+                    "created_at",
+                    "delivered_at",
+                    "customer_id",
+                    "origin_id",
+                    "destination_id",
+                    "weight_kg",
+                    "status"
+                ],
+                "default_stream_properties": {
+                    "append_mode": false,
+                    "normalization": true
+                },
+                "destination_database": "postgres_logistics_db:logistic_app",
+                "destination_table": "shipments",
+                "name": "shipments",
+                "namespace": "logistic_app",
+                "source_defined_primary_key": [
+                    "shipment_id"
+                ],
+                "supported_sync_modes": [
+                    "full_refresh",
+                    "incremental"
+                ],
+                "sync_mode": "full_refresh",
+                "type_schema": {
+                    "properties": {
+                        "_olake_id": {
+                            "destination_column_name": "_olake_id",
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "_olake_timestamp": {
+                            "destination_column_name": "_olake_timestamp",
+                            "type": [
+                                "timestamp_micro",
+                                "null"
+                            ]
+                        },
+                        "_op_type": {
+                            "destination_column_name": "_op_type",
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "created_at": {
+                            "destination_column_name": "created_at",
+                            "type": [
+                                "timestamp",
+                                "null"
+                            ]
+                        },
+                        "customer_id": {
+                            "destination_column_name": "customer_id",
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "delivered_at": {
+                            "destination_column_name": "delivered_at",
+                            "type": [
+                                "timestamp",
+                                "null"
+                            ]
+                        },
+                        "destination_id": {
+                            "destination_column_name": "destination_id",
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "origin_id": {
+                            "destination_column_name": "origin_id",
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "shipment_id": {
+                            "destination_column_name": "shipment_id",
+                            "type": [
+                                "integer"
+                            ]
+                        },
+                        "status": {
+                            "destination_column_name": "status",
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "volume_m3": {
+                            "destination_column_name": "volume_m3",
+                            "type": [
+                                "number",
+                                "null"
+                            ]
+                        },
+                        "weight_kg": {
+                            "destination_column_name": "weight_kg",
+                            "type": [
+                                "number",
+                                "null"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "stream": {
+                "available_cursor_fields": [
+                    "shipment_id",
+                    "vehicle_id",
+                    "driver_id",
+                    "start_time",
+                    "end_time",
+                    "status",
+                    "created_at",
+                    "assignment_id"
+                ],
+                "default_stream_properties": {
+                    "append_mode": false,
+                    "normalization": true
+                },
+                "destination_database": "postgres_logistics_db:logistic_app",
+                "destination_table": "assignments",
+                "name": "assignments",
+                "namespace": "logistic_app",
+                "source_defined_primary_key": [
+                    "assignment_id"
+                ],
+                "supported_sync_modes": [
+                    "incremental",
+                    "full_refresh"
+                ],
+                "sync_mode": "full_refresh",
+                "type_schema": {
+                    "properties": {
+                        "_olake_id": {
+                            "destination_column_name": "_olake_id",
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "_olake_timestamp": {
+                            "destination_column_name": "_olake_timestamp",
+                            "type": [
+                                "timestamp_micro",
+                                "null"
+                            ]
+                        },
+                        "_op_type": {
+                            "destination_column_name": "_op_type",
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "assignment_id": {
+                            "destination_column_name": "assignment_id",
+                            "type": [
+                                "integer"
+                            ]
+                        },
+                        "created_at": {
+                            "destination_column_name": "created_at",
+                            "type": [
+                                "null",
+                                "timestamp"
+                            ]
+                        },
+                        "driver_id": {
+                            "destination_column_name": "driver_id",
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "end_time": {
+                            "destination_column_name": "end_time",
+                            "type": [
+                                "timestamp",
+                                "null"
+                            ]
+                        },
+                        "shipment_id": {
+                            "destination_column_name": "shipment_id",
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "start_time": {
+                            "destination_column_name": "start_time",
+                            "type": [
+                                "timestamp",
+                                "null"
+                            ]
+                        },
+                        "status": {
+                            "destination_column_name": "status",
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "vehicle_id": {
+                            "destination_column_name": "vehicle_id",
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "stream": {
+                "available_cursor_fields": [
+                    "phone_number",
+                    "created_at",
+                    "updated_at",
+                    "name",
+                    "license_number",
+                    "hired_at",
+                    "status",
+                    "working_hours",
+                    "driver_id"
+                ],
+                "default_stream_properties": {
+                    "append_mode": false,
+                    "normalization": true
+                },
+                "destination_database": "postgres_logistics_db:logistic_app",
+                "destination_table": "drivers",
+                "name": "drivers",
+                "namespace": "logistic_app",
+                "source_defined_primary_key": [
+                    "driver_id",
+                    "license_number"
+                ],
+                "supported_sync_modes": [
+                    "full_refresh",
+                    "incremental"
+                ],
+                "sync_mode": "incremental",
+                "cursor_field": "updated_at",
+                "type_schema": {
+                    "properties": {
+                        "_olake_id": {
+                            "destination_column_name": "_olake_id",
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "_olake_timestamp": {
+                            "destination_column_name": "_olake_timestamp",
+                            "type": [
+                                "timestamp_micro",
+                                "null"
+                            ]
+                        },
+                        "_op_type": {
+                            "destination_column_name": "_op_type",
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "created_at": {
+                            "destination_column_name": "created_at",
+                            "type": [
+                                "timestamp",
+                                "null"
+                            ]
+                        },
+                        "driver_id": {
+                            "destination_column_name": "driver_id",
+                            "type": [
+                                "integer"
+                            ]
+                        },
+                        "hired_at": {
+                            "destination_column_name": "hired_at",
+                            "type": [
+                                "timestamp",
+                                "null"
+                            ]
+                        },
+                        "license_number": {
+                            "destination_column_name": "license_number",
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "name": {
+                            "destination_column_name": "name",
+                            "type": [
+                                "string"
+                            ]
+                        },
+                        "phone_number": {
+                            "destination_column_name": "phone_number",
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "status": {
+                            "destination_column_name": "status",
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "updated_at": {
+                            "destination_column_name": "updated_at",
+                            "type": [
+                                "timestamp",
+                                "null"
+                            ]
+                        },
+                        "working_hours": {
+                            "destination_column_name": "working_hours",
+                            "type": [
+                                "null",
+                                "number"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "stream": {
+                "available_cursor_fields": [
+                    "type",
+                    "address",
+                    "country",
+                    "created_at",
+                    "location_id",
+                    "name"
+                ],
+                "default_stream_properties": {
+                    "append_mode": false,
+                    "normalization": true
+                },
+                "destination_database": "postgres_logistics_db:logistic_app",
+                "destination_table": "locations",
+                "name": "locations",
+                "namespace": "logistic_app",
+                "source_defined_primary_key": [
+                    "location_id"
+                ],
+                "supported_sync_modes": [
+                    "full_refresh",
+                    "incremental"
+                ],
+                "sync_mode": "full_refresh",
+                "type_schema": {
+                    "properties": {
+                        "_olake_id": {
+                            "destination_column_name": "_olake_id",
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "_olake_timestamp": {
+                            "destination_column_name": "_olake_timestamp",
+                            "type": [
+                                "timestamp_micro",
+                                "null"
+                            ]
+                        },
+                        "_op_type": {
+                            "destination_column_name": "_op_type",
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "address": {
+                            "destination_column_name": "address",
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "country": {
+                            "destination_column_name": "country",
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "created_at": {
+                            "destination_column_name": "created_at",
+                            "type": [
+                                "timestamp",
+                                "null"
+                            ]
+                        },
+                        "location_id": {
+                            "destination_column_name": "location_id",
+                            "type": [
+                                "integer"
+                            ]
+                        },
+                        "name": {
+                            "destination_column_name": "name",
+                            "type": [
+                                "string"
+                            ]
+                        },
+                        "type": {
+                            "destination_column_name": "type",
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

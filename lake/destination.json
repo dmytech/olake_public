@@ -1,0 +1,10 @@
+{
+    "type": "ICEBERG",
+    "writer": {
+      "catalog_type": "glue",
+      "iceberg_s3_path": "s3://your-bucket/iceberg/logistics_db/",
+      "aws_region": "eu-central-1",
+      "aws_access_key": "********",
+      "aws_secret_key": "************************"
+    }
+}

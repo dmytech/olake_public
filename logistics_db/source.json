@@ -1,0 +1,13 @@
+{
+    "host": "10.0.0.1",
+    "port": 5432,
+    "database": "logistics_db",
+    "username": "dev",
+    "password": "*******",
+    "retry_count": 3,
+    "ssl": {
+        "mode": "disable"
+    },
+    "max_threads": 5,
+    "ssh_config": {"type": "no_tunnel"}
+}
