@@ -12,16 +12,16 @@ This repo contains base Kustomize manifests plus environment overlays for runnin
 
 - `base/discover` — reusable Job manifest (discover)
 - `base/sync` — reusable CronJob manifest (sync) + PVC
-- `logistics_db` — overlay that generates the **source** secret
-- `lake` — overlay that generates the **destination** secret
-- `ligistics_aws_sc` — overlay that generates the **streams** configmap and wires sync names
+- `sources/logistics_db` — overlay that generates the **source** secret
+- `destinations/lake` — overlay that generates the **destination** secret
+- `streams/ligistics_aws_sc` — overlay that generates the **streams** configmap and wires sync names
 
 ## Discover: example run
 
 1) Apply the source secret and discover Job:
 
 ```sh
-kubectl apply -k logistics_db
+kubectl apply -k sources/logistics_db
 ```
 
 2) Wait for completion and view logs:
@@ -36,8 +36,8 @@ kubectl -n olake logs job/logistics-db-olake-source-check -c discover
 1) Apply destination secret and the sync CronJob overlay:
 
 ```sh
-kubectl apply -k lake
-kubectl apply -k ligistics_aws_sc
+kubectl apply -k destinations/lake
+kubectl apply -k streams/ligistics_aws_sc
 ```
 
 2) (Optional) trigger a one-off run from the CronJob:
